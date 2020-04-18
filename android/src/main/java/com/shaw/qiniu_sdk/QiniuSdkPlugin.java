@@ -6,6 +6,7 @@ import android.os.Looper;
 import androidx.annotation.NonNull;
 
 import com.qiniu.android.http.ResponseInfo;
+import com.qiniu.android.storage.Configuration;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
 
@@ -61,7 +62,10 @@ public class QiniuSdkPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     private void uploadFile(String filePath, String customKey, String token, final Result result) {
-        UploadManager uploadManager = new UploadManager();
+        Configuration config = new Configuration.Builder()
+                .useHttps(true)               // 是否使用https上传域名
+                .build();
+        UploadManager uploadManager = new UploadManager(config);
         uploadManager.put(filePath, customKey, token, new UpCompletionHandler() {
             @Override
             public void complete(String key, ResponseInfo info, JSONObject response) {
@@ -69,7 +73,6 @@ public class QiniuSdkPlugin implements FlutterPlugin, MethodCallHandler {
             }
         }, null);
     }
-
 
     private static class MainThreadResult implements MethodChannel.Result {
         private MethodChannel.Result result;
