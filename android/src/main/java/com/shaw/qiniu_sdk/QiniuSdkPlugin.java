@@ -11,6 +11,7 @@ import com.qiniu.android.storage.Configuration;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -72,6 +73,13 @@ public class QiniuSdkPlugin implements FlutterPlugin, MethodCallHandler {
             @Override
             public void complete(String key, ResponseInfo info, JSONObject response) {
                 Log.v("QINIU_SDK", "complete: upload" + key);
+                Log.v("QINIU_SDK", "complete: upload" + response);
+                try {
+                    Log.v("QINIU_SDK", "complete: upload" + response.get("key"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 new MainThreadResult(result).success(key);
             }
         }, null);
