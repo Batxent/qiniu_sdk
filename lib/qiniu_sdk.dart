@@ -11,12 +11,12 @@ class QiniuSdk {
     return version;
   }
 
-  static Future<String> uploadFile(String filePath, String key, String token) {
+  static Future<String> uploadFile(String filePath, String key, String token) async {
     Map param = {
       "filePath": filePath,
       "key": key,
       "token": token,
     };
-    return _channel.invokeMethod("uploadFile", param);
+    return await _channel.invokeMethod("uploadFile", param);
   }
 }
