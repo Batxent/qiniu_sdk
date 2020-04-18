@@ -72,15 +72,16 @@ public class QiniuSdkPlugin implements FlutterPlugin, MethodCallHandler {
         uploadManager.put(filePath, customKey, token, new UpCompletionHandler() {
             @Override
             public void complete(String key, ResponseInfo info, JSONObject response) {
-                Log.v("QINIU_SDK", "complete: upload" + key);
-                Log.v("QINIU_SDK", "complete: upload" + response);
-                try {
-                    Log.v("QINIU_SDK", "complete: upload" + response.get("key"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if (info.isOK()) {
+                    try {
+                        new MainThreadResult(result).success(response.get("key"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        new MainThreadResult(result).success(null);
+                    }
+                }else  {
+                    new MainThreadResult(result).success(null);
                 }
-
-                new MainThreadResult(result).success(key);
             }
         }, null);
     }
