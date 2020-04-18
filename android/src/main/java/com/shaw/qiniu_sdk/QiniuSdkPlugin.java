@@ -52,6 +52,7 @@ public class QiniuSdkPlugin implements FlutterPlugin, MethodCallHandler {
             String filePath = call.argument("filePath");
             String key = call.argument("key");
             String token = call.argument("token");
+            Log.v("QINIU_SDK", "start: upload " + filePath + " " + key + " " + token);
             uploadFile(filePath, key, token, result);
         } else {
             result.notImplemented();
