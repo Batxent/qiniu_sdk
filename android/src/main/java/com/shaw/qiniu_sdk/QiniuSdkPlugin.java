@@ -2,6 +2,7 @@ package com.shaw.qiniu_sdk;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -69,6 +70,7 @@ public class QiniuSdkPlugin implements FlutterPlugin, MethodCallHandler {
         uploadManager.put(filePath, customKey, token, new UpCompletionHandler() {
             @Override
             public void complete(String key, ResponseInfo info, JSONObject response) {
+                Log.d("QINIU_SDK", "complete: upload" + key);
                 new MainThreadResult(result).success(key);
             }
         }, null);
