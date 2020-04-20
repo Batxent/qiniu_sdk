@@ -30,7 +30,7 @@
 
     QNUploadManager *manager = [[QNUploadManager alloc]init];
     [manager putFile:filePath key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        result(key);
+        result(resp[@"key"]);
     } option:nil];
     
 }
