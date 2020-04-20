@@ -19,11 +19,6 @@
         NSString *filePath = call.arguments[@"filePath"];
         NSString *key = call.arguments[@"key"];
         NSString *token = call.arguments[@"token"];
-        
-        NSLog(@"filePath: %@", filePath);
-        NSLog(@"key: %@", key);
-        NSLog(@"token: %@", token);
-        
         [self uploadFile:filePath key:key token:token result:result];
     }else {
         result(FlutterMethodNotImplemented);
@@ -33,7 +28,11 @@
 - (void)uploadFile:(NSString *)filePath key:(NSString *)key token:(NSString *)token result:(FlutterResult)result
 {
     
-    QNUploadManager *manager = [[QNUploadManager alloc]init];
+    QNConfiguration *config = [QNConfiguration build:^(QNConfigurationBuilder *builder) {
+           builder.zone = [QNFixedZone zone0];
+    }];
+    
+    QNUploadManager *manager = [[QNUploadManager alloc]initWithConfiguration:config];
     [manager putFile:filePath key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         dispatch_async(dispatch_get_main_queue(), ^{
             result(resp[@"key"]);
