@@ -29,14 +29,21 @@
 {
     
     QNConfiguration *config = [QNConfiguration build:^(QNConfigurationBuilder *builder) {
-           builder.zone = [QNFixedZone zone0];
+        builder.zone = [QNFixedZone zone0];
+        builder.useHttps = YES;
     }];
     
     QNUploadManager *manager = [[QNUploadManager alloc]initWithConfiguration:config];
     [manager putFile:filePath key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            result(resp[@"key"]);
-        });
+        if (info.ok) {
+            result(resp);
+        }else {
+            result(info.error.localizedDescription);
+        }
+        
+        NSLog(@"info ===== %@", info);
+        NSLog(@"resp ===== %@", resp);
+        
     } option:nil];
 }
 
