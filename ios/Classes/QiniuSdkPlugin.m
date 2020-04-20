@@ -34,7 +34,7 @@
     }];
     
     QNUploadManager *manager = [[QNUploadManager alloc]initWithConfiguration:config];
-    [manager putFile:filePath key:key token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+    [manager putFile:filePath key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
         if (info.ok) {
             result(resp);
         }else {
