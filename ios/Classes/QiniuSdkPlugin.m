@@ -15,7 +15,7 @@
 {
     if ([@"getPlatformVersion" isEqualToString:call.method]) {
         result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
-    } else if ([@"getPlatformVersion" isEqualToString:call.method]) {
+    } else if ([@"uploadFile" isEqualToString:call.method]) {
         NSString *filePath = call.arguments[@"filePath"];
         NSString *key = call.arguments[@"key"];
         NSString *token = call.arguments[@"token"];
