@@ -35,12 +35,10 @@
     
     QNUploadManager *manager = [[QNUploadManager alloc]initWithConfiguration:config];
     [manager putFile:filePath key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        if (info.ok) {
-            result(resp);
-        }else {
-            result(info.error.localizedDescription);
-        }
-        
+        result(resp[@"key"]);
+//        if (info.ok) {
+//        }else {
+//        }
         NSLog(@"info ===== %@", info);
         NSLog(@"resp ===== %@", resp);
         
