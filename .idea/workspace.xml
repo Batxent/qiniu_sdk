@@ -4,12 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4f7d8d6-1f49-4ffe-8993-a9593f50eb26" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/QiniuSdkPlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/QiniuSdkPlugin.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/qiniu_sdk.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/qiniu_sdk.dart" afterDir="false" />
-    </list>
+    <list default="true" id="d4f7d8d6-1f49-4ffe-8993-a9593f50eb26" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +44,7 @@
       <option name="presentableId" value="Default" />
       <updated>1587218765461</updated>
       <workItem from="1587372588002" duration="176000" />
+      <workItem from="1587448853456" duration="48000" />
     </task>
     <servers />
   </component>
